@@ -12,6 +12,10 @@ import Blog from './Paths/Blog/Blog'
 import Post from './Paths/Blog/Post/Post'
 
 
+import Amplify from 'aws-amplify';
+import config from './aws-exports';
+Amplify.configure(config);
+
 function Component(){
   return(
     <>

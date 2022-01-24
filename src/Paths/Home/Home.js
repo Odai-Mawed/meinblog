@@ -2,6 +2,7 @@ import Header from '../../components/BlogHeader/BlogHeader'
 import HomeMain from './HomeMain'
 
 
+import { withAuthenticator } from '@aws-amplify/ui-react'
 
 
 function Home(){
@@ -14,4 +15,4 @@ function Home(){
 }
 
 
-export default Home
+export default withAuthenticator(Home);
