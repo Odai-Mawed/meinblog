@@ -6,12 +6,19 @@ const useStyles = makeStyles((theme) => ({
             fontWeight: '900',
             marginRight: '15px'
     },
-    KommentatorenContainer : {
+    kommentatorenContainer : {
         height: '300px',
-        backgroundColor: 'aqua',
-        width: 'fit-content',
+        backgroundColor: '#f2f7f7bd',
         overflowY: 'scroll',
-        width: '50%'
+        maxWidth: '80%',
+        marginRight: 'auto',
+        marginLeft: 'auto',
+    },
+    searchBoxContainer : {
+        marginRight: 'auto',
+        marginLeft: 'auto',
+        marginBottom: '20px',
+        maxWidth: '80%'
     }
 }))
 

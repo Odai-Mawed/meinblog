@@ -3,7 +3,10 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
     whatCannIDoForYouContainer : {
-        padding : '90px 45px 100px 45px'
+        padding : '90px 45px 100px 45px',
+        maxWidth: '75%',
+        marginRight: 'auto',
+        marginLeft: 'auto'
     },  
     contentContainer: {
         display: 'flex',
@@ -13,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: '100%',
         [theme.breakpoints.only('xs')]: {
             flexDirection: 'column',
+            alignItems: 'center'
         },  
     },
     avatarContainer : {

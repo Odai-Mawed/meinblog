@@ -2,7 +2,6 @@
 import useStyles from './css/css'
 
 //media
-import berlinBild from './media/berlin.jpeg'
 import odaiBild from './media/odai.jpg'
 
 //mui components    
@@ -22,7 +21,7 @@ function WhatCannIDoForYou(){
                     Was kann ich für Sie tun?
                 </a.Typography>
                 <div className={classes.contentContainer}>
-                    <a.Box sx={{maxWidth:'312px', display:'flex', flexDirection:'column', justifyContent:'flex-end'}}>
+                    <a.Box sx={{ display:'flex', flexDirection:'column', justifyContent:'flex-end'}}>
                         <a.Typography sx={{textTransform: 'uppercase', fontWeight: '800',
                             fontSize: '0.75rem',
                             marginBottom: '15px'}}>
@@ -38,7 +37,7 @@ function WhatCannIDoForYou(){
                     <div className={classes.avatarContainer}>
                         <a.Avatar alt="Remy Sharp"  src={odaiBild} sx={{ width: '280px', height: '280px', marginRight: '70px', marginLeft:'70px' }}/>
                     </div>
-                    <a.Box sx={{maxWidth:'312px', display:'flex', flexDirection:'column', justifyContent:'flex-end'}}>
+                    <a.Box sx={{display:'flex', flexDirection:'column', justifyContent:'flex-end'}}>
                         <a.Typography sx={{textTransform: 'uppercase', fontWeight: '800',
                             fontSize: '0.75rem',
                             marginBottom: '15px'}}>

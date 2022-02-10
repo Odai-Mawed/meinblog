@@ -1,6 +1,7 @@
 //General
-import React from 'react'
-import { Link, Outlet } from "react-router-dom";
+import { Auth } from 'aws-amplify';
+import { useNavigate } from "react-router-dom";
+import React, {useState, useEffect} from 'react';
 
 //mui components
 import * as a from '@mui/material';
@@ -27,22 +28,65 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(0, 1),
 
         justifyContent: 'flex-end',
-    }
+    },
+    cursorPointer : {
+        cursor : 'pointer',
+        '&:hover': {
+            fontWeight: '100'
+         },
+    },
 
 }));
 
 
 
+
 export default function HeaderSitenavbar(){
     const classes = useStyles();
+    let navigate = useNavigate();
 
     var [offen, setOffen] = React.useState(false)
+    var [istAngemeldet, setIstAngemeldet] = useState(false);
 
     const handleToggle = ()=>{
         setOffen(!offen)
     }
-    const container = document.getElementsByClassName('makeStyles-postContainer-8')
-    console.log(container)
+
+    async function signOut() {
+        try {
+            await Auth.signOut();
+            navigate(`/SignIn`);
+
+            console.log('du bist jetzt abgemeldet')
+        } catch (error) {
+            console.log('error signing out: ', error);
+            
+        }
+    }
+    useEffect(async ()=>{
+        async function lookIfUserIsAngemeldet(){
+            try{
+                var user = await Auth.currentAuthenticatedUser();
+                if(user){
+                    setIstAngemeldet(true);
+                }
+            }catch(error){
+                setIstAngemeldet(false);
+                console.log('Der User ist nicht angemeldet', error);
+            }
+        }
+        await lookIfUserIsAngemeldet();
+    })
+
+    async function navigateToBlog(){
+        navigate('/Blog')
+    }
+    async function navigateToProfile(){
+        navigate('/Profile')
+    }
+    async function navigateToSignIn(){
+        navigate('/SignIn')
+    }
     return(
         <>
             <a.IconButton edge="start" onClick={handleToggle} color="inherit" sx={{fontSize:'2rem'}} aria-label="menu">
@@ -63,35 +107,39 @@ export default function HeaderSitenavbar(){
                   }}
                 sx={{backgroundColor:'#222222'}}
                 >
-                <div className={classes.drawerHeader} onClick={handleToggle}>
+                <div className={classes.drawerHeader } onClick={handleToggle}>
                     <a.IconButton edge="start" color="inherit" aria-label="menu">
-                        <icon.Close sx={{fontSize:'2.5rem'}}/>
+                        <icon.Close className={classes.cursorPointer} sx={{fontSize:'2.5rem'}}/>
                     </a.IconButton>
                 </div>
                 <a.List sx={{flexDirection:'row', justifyContent:'space-evenly'}}>
-                    <a.Typography sx={{fontWeight:'700', fontSize:'1.7rem', textAlign:'center', marginBottom:'20px'}}>
+                    <a.Typography className={classes.cursorPointer} onClick={navigateToProfile} sx={{fontWeight:'700', fontSize:'1.7rem', textAlign:'center', marginBottom:'20px'}}>
                         PROFILE
                     </a.Typography>
-                    <a.Typography sx={{fontWeight:'700', fontSize:'1.7rem', textAlign:'center', marginBottom:'20px'}}>
-                        <Link to={`/Blog`}>Blog</Link> 
+                    <a.Typography className={classes.cursorPointer} onClick={navigateToBlog} sx={{fontWeight:'700', fontSize:'1.7rem', textAlign:'center', marginBottom:'20px'}}>
+                        Blog
                     </a.Typography>
-                    <a.Typography sx={{fontWeight:'700', fontSize:'1.7rem', textAlign:'center', marginBottom:'20px'}}>
-                        ORTS
-                    </a.Typography>
-                    <a.Typography sx={{fontWeight:'700', fontSize:'1.7rem', textAlign:'center', marginBottom:'20px'}}>
-                        LOGOUT
-                    </a.Typography>
+                    {console.log(istAngemeldet)}
+                    {
+                        istAngemeldet ?
+                        <a.Typography className={classes.cursorPointer} onClick={signOut} sx={{fontWeight:'700', fontSize:'1.7rem', textAlign:'center', marginBottom:'20px'}}>
+                            LOGOUT
+                        </a.Typography> :
+                        <a.Typography className={classes.cursorPointer} onClick={navigateToSignIn} sx={{fontWeight:'700', fontSize:'1.7rem', textAlign:'center', marginBottom:'20px'}}>
+                            LOGIN
+                        </a.Typography>
+                    }
                 </a.List>
 
                 <a.Toolbar sx={{width:'300px', justifyContent: 'space-between'}}>
                     <a.IconButton edge="start" color="inherit" sx={{fontSize:4}}  aria-label="menu">
-                        <icon.Twitter sx={{fontSize:'2.5rem'}}/>
+                        <icon.Twitter className={classes.cursorPointer} sx={{fontSize:'2.5rem'}}/>
                     </a.IconButton>
                     <a.IconButton edge="start" color="inherit" sx={{fontSize:'2.5rem'}}  aria-label="menu">
-                        <icon.Facebook sx={{fontSize:'2.5rem'}}/>
+                        <icon.Facebook className={classes.cursorPointer} sx={{fontSize:'2.5rem'}}/>
                     </a.IconButton>
                     <a.IconButton edge="start" color="inherit" sx={{fontSize:'2.5rem'}}  aria-label="menu">
-                        <icon.Instagram sx={{fontSize:'2.5rem'}}/>
+                        <icon.Instagram className={classes.cursorPointer} sx={{fontSize:'2.5rem'}}/>
                     </a.IconButton>
                 </a.Toolbar>
             </a.Drawer>

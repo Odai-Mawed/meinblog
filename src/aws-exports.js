@@ -3,10 +3,10 @@
 
 const awsmobile = {
     "aws_project_region": "eu-central-1",
-    "aws_cognito_identity_pool_id": "eu-central-1:237eb290-e96b-4767-a6e1-22098083abd9",
+    "aws_cognito_identity_pool_id": "eu-central-1:d878c8d8-fc4f-4a32-9f26-8257a762f1c8",
     "aws_cognito_region": "eu-central-1",
-    "aws_user_pools_id": "eu-central-1_YbImmAGcP",
-    "aws_user_pools_web_client_id": "4mqa9jch5psr9pt00ak0fv9qhs",
+    "aws_user_pools_id": "eu-central-1_LXsJUbJ45",
+    "aws_user_pools_web_client_id": "22vt6j2sv3nbf142nqgjur2mji",
     "oauth": {},
     "aws_cognito_username_attributes": [],
     "aws_cognito_social_providers": [],
@@ -23,7 +23,13 @@ const awsmobile = {
     },
     "aws_cognito_verification_mechanisms": [
         "EMAIL"
-    ]
+    ],
+    "aws_appsync_graphqlEndpoint": "https://ppx5gt6o5rei7fonbmwniqhfoe.appsync-api.eu-central-1.amazonaws.com/graphql",
+    "aws_appsync_region": "eu-central-1",
+    "aws_appsync_authenticationType": "AMAZON_COGNITO_USER_POOLS",
+    "aws_appsync_apiKey": "da2-kwem5zg3lng2payh67kw4r4jpm",
+    "aws_user_files_s3_bucket": "meinblog019e64b90d6c4b6bbebafaff0a641e3d231157-staging",
+    "aws_user_files_s3_bucket_region": "eu-central-1"
 };
 
 

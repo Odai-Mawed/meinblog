@@ -33,7 +33,7 @@ function Footer(){
                         Berlin
                     </a.Typography>
                     <a.Typography sx={{fontSize: '1.875rem', lineHeight: '3.75rem'}}>
-                        Hamburg
+                        Hier werden Sie fündig
                     </a.Typography>
                 </div>
                     <a.Typography sx={{lineHeight: '.875rem', color: '#666', fontSize: '.75rem'}}>

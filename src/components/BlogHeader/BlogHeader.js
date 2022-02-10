@@ -1,6 +1,8 @@
 import React from 'react'
+//import mui components
 import * as a from '@mui/material';
-import { createTheme } from '@mui/material/styles';
+
+//import the header logo and header right section componennts
 import HeaderLogo from './BlogHeaderLogo';
 import HeaderRechts from './BlogHeaderRechts';
 

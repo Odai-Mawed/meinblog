@@ -15,7 +15,7 @@ function HomeMain(){
                     Welkommen auf Odai's Blog
                 </p>
                 <a className={classes.unterUeberschrift}>
-                    Mehr über uns
+                    Mehr über mich
                 </a>
             </div>  
 

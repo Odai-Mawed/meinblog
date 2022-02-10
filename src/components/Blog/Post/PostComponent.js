@@ -4,14 +4,10 @@ import * as a from '@mui/material';
 //styles
 import useStyles from './css/css'
 
-
-//media
-import berlinBild from '../media/berlin.jpeg'
-
 //Costum Component
 import WhatCannIDoForYou from '../WhatCannIDoForYou'
 
-function PostComponentTitle(){
+function PostComponentTitle(props){
     var classes = useStyles()
     return(
         <>
@@ -30,7 +26,7 @@ function PostComponentTitle(){
                     fontSize: '1.875rem',
                     fontWeight: '900',
                     paddingLeft: '20px'}} className={classes.postTitleContent}>
-                    Remote, office, hybrid: what we learned about co-creation
+                        {props.title}
                 </a.Typography>
             </div>
         </>
@@ -39,13 +35,13 @@ function PostComponentTitle(){
 
 
 
-function PostComponentImage(){
+function PostComponentImage(props){
     var classes = useStyles()
 
     return(
         <>
             <div className={classes.postImageContainer}>
-                <img src={berlinBild} className={classes.postImage} alt=""/>
+                <img src={props.image} className={classes.postImage} alt=""/>
             </div>
         </>
     )
@@ -53,35 +49,26 @@ function PostComponentImage(){
 
 
 
-function PostComponentImageTitle(){
+function PostComponentImageTitle(props){
     var classes = useStyles()
-
+    console.log(props)
     return(
         <>
             <h3 className={classes.postImageTitle}>
-                Judith Janz and Markus Meißner 
-                reflect on how co-creation has changed as a 
-                result of virtual opportunities.
+                {props.imageDescription}
             </h3>
         </>
     )
 }
 
-function PostComponentContent(){
+function PostComponentContent(props){
     var classes = useStyles()
 
     return(
         <>
             <div className={classes.postContent}>
                 <p>
-                    Judith Janz and Markus Meißner,
-                    both senior experience designers
-                    and enterprise design thinking coaches 
-                    at IBM iX in Berlin, worked mostly
-                    from home during the pandemic.
-                    Now they are returning to the agency more frequently,
-                    and reflect on how co-creation has      
-                    changed as a result of virtual opportunities.
+                    {props.content}
                 </p>
             </div>
         </>
@@ -90,15 +77,16 @@ function PostComponentContent(){
 
 
 
-function PostComponent(){
+function PostComponent(props){
     var classes = useStyles()
+    console.log(props)
     return (
         <>
-            <PostComponentTitle />
+            <PostComponentTitle title={props.post.title}/>
             <div className={classes.postContentContainer}>
-                <PostComponentImage />
-                <PostComponentImageTitle />
-                <PostComponentContent />
+                <PostComponentImage image={props.post.image}/>
+                <PostComponentImageTitle imageDescription={props.post.imageDescription}/>
+                <PostComponentContent content={props.post.content}/>
             </div>
             <WhatCannIDoForYou />
         </>

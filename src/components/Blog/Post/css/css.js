@@ -7,9 +7,9 @@ const useStyles = makeStyles((theme) => ({
         color: 'black'
     },
     card : {
-        maxWidth: '50%',
+        width: '50%',
         [theme.breakpoints.down('sm')] : {
-            maxWidth: '100%'
+            width: '100%'
         },
     },
     postTitleContainer : {
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     },
     postTitleContent : {
         [theme.breakpoints.up('sm')] : {
-            maxWidth: '50%'
+            width: '50%'
         },
     },
     postImage : {
@@ -33,17 +33,19 @@ const useStyles = makeStyles((theme) => ({
     },
     postImageContainer : {
         paddingTop : '25px',
-        [theme.breakpoints.up('sm')] : {
+        [theme.breakpoints.up('md')] : {
             float : 'right',
-            marginTop : '-30%',
+            marginTop : '-20%',
             maxWidth : '35%',
-            marginRight : '-60px'
+            marginRight : '-55px'
         },
     },
     postContentContainer : {
         padding : '0 20px',
-        maxWidth : '65%',
+        maxWidth : '75%',
         marginTop : '70px',
+        marginRight: 'auto',
+        marginLeft: 'auto',
 
     },
     postImageTitle : {
